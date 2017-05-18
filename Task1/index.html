@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/angular.min.js"></script>
+    </head>
+    <body ng-app="myApp" ng-controller="myController">
+        <div>TODO write content</div>
+        <input type="text" ng-model="txtName">
+
+        <h3>Ban vua nha ten la: {{txtName}}</h3>
+        <p ng-repeat="x in list">{{x.name}}  ----- [{{x.id}}]</p>
+
+    </body>
+    <script>
+        var app = angular.module("myApp", []);
+        app.controller("myController", function ($scope) {
+            
+            $scope.list = [{'id': '001', 'name': 'Le van A'}, {'id': '021', 'name': 'Le van B'}, {'id': '0212', 'name': 'Le van c'}];
+        });
+    </script>
+</html>

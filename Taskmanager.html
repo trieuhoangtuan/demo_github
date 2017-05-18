@@ -1,0 +1,71 @@
+
+<html>
+    <head>
+        <title>Bai Tap 02</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/bootstrap.min.js" type="text/javascript"></script>
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <script src="js/jquery-3.2.0.js" type="text/javascript"></script>
+        <script src="js/bootstrap.js" type="text/javascript"></script>
+        <script src="js/angular.min.js" type="text/javascript"></script>
+    </head>
+    <body> 
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav class="navbar bg-primary">
+                        <div class="navbar-text btn-lg">
+                            <span class="glyphicon glyphicon-align-justify "></span>
+                        </div>
+                        <div class="navbar-text btn-lg">
+                            <p>TASK MANAGER</p>
+                        </div>
+                        <div class="navbar-right navbar-text tdh">
+                            <input class="form-control" type="text" placeholder="Fliter Tasks">                    
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="container-fluid">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Add New Task">
+                    <span class="glyphicon-plus btn input-group-addon"> Add New Task</span>
+                </div>
+
+
+                <div class="task">
+                    <label class="checkbox" ng-repeat="t in TASK"/>
+                    <input type="checkbox"value="0"/>
+                    <span>
+                        {{t.id}} - {{t.task}}
+                    </span>
+                    <a class="pull-right"><i class="glyphicon glyphicon-trash"</i></a>
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+    </body>
+    <script>
+        var app = angular.module('myApp', []);
+
+        app.controller('myControler', function ($scope, $http) {
+            GetAllTask();
+            function GetAllTask()
+            {
+                $http.post("xlTask/xulytask.php").success(function (data) {
+                    $scope.TASK = data;
+                });
+            }
+        });
+    </script>
+</html>
